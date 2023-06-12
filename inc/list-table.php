@@ -243,7 +243,7 @@ class Categorizer_List_Table extends WP_List_Table
     public function process_bulk_action()
     {
         //log_it($_REQUEST, 'Request');
-        //log_it($_REQUEST, 'REQUEST');
+       
         
         
         if ('categoriz' === $this->current_action()) {

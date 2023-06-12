@@ -70,6 +70,7 @@ class RFX_Categorizer
 
     public function rafax_categoriz_admin_page()
     {
+        
         if (isset($_POST['cat_name']) && wp_verify_nonce($_POST['_wpnonce'], 'create_category')) {
             $cat_name = sanitize_text_field($_POST['cat_name']);
             $cat = wp_create_category($cat_name);
@@ -77,21 +78,22 @@ class RFX_Categorizer
             $type = $cat > 0 ? 'success' : 'error';
             printf('<div class="notice notice-%s is-dismissible"><p>%s</p></div>', $type, sprintf(__($message, 'rafax-categorizer'), $cat_name));
 
-        }
+        } 
         ?>
+        <div id="message"></div>
         <div class="wrap">
             <h2> Categorizer by rafax</h2>
             <table class="form-table">
                 <tr>
                     <td style="width:30%">
-                        <form method="post">
-                            <label for="cat_create">Crear categoria</label></br>
-                            <input name="cat_name" id="cat_name" type="text">
-                            <?php wp_nonce_field('create_category');
-                            submit_button(__('Crear', 'rafax-categorizer'), '', 'cat_create', false, array('id' => 'cat_create')); ?>
-
+                        <form  method="post">
+                        <label for="cat_create">Crear categoria</label></br>
+                        <input name="cat_name" id="cat_name" type="text">
+                        <?php wp_nonce_field('categorizer_nonce');?>
+                        <input type="button" name="cat_create" id="cat_create" class="button" value="Crear">
                         </form>
                     </td>
+
                 </tr>
             </table>
             <form id="categorizer_list" class="form-table" method="post">
