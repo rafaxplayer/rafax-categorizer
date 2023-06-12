@@ -86,29 +86,24 @@ class RFX_Categorizer
     public function rafax_categoriz_admin_page()
     {
 
-        //log_it($_POST, 'POST');
-
         if (isset($_POST['cat_name'])) {
 
-            if(empty($_POST['cat_name'])){
-                $message = 'Categoria vacia!' ;
+            if (empty($_POST['cat_name'])) {
+                $message = 'Categoria vacia!';
                 $type = 'success';
                 printf('<div class="notice notice-%s is-dismissible"><p>%s</p></div>', $type, sprintf(__($message, 'rafax-categorizer'), $cat_name));
-            }else{
+            } else {
 
                 if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'create_category')) {
                     die('No tienes permisos para esto');
                 }
                 $cat_name = sanitize_text_field($_POST['cat_name']);
-    
+
                 $cat = wp_create_category($cat_name);
                 $message = $cat > 0 ? 'Categoria <b>%s</b> creada con exito!' : 'Ocurrio un error al crear la categoria %s';
                 $type = $cat > 0 ? 'success' : 'error';
                 printf('<div class="notice notice-%s is-dismissible"><p>%s</p></div>', $type, sprintf(__($message, 'rafax-categorizer'), $cat_name));
             }
-
-
-            
 
         }
         ?>
