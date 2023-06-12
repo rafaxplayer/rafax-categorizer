@@ -4,21 +4,7 @@ if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
 
-/* function log_it($message, $ident = '')
-{
-    if (WP_DEBUG === true) {
 
-        if (!empty($ident)) {
-            error_log($ident . ': ');
-        }
-
-        if (is_array($message) || is_object($message)) {
-            error_log(print_r($message, true));
-        } else {
-            error_log($message);
-        }
-    }
-} */
 
 class Categorizer_List_Table extends WP_List_Table
 {
