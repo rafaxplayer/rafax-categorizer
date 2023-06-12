@@ -138,4 +138,6 @@ function RFX_CATEGORIZER()
 {
     return RFX_Categorizer::instance();
 }
-RFX_CATEGORIZER();
+add_action( 'plugins_loaded', function () {
+    RFX_CATEGORIZER();
+} );
